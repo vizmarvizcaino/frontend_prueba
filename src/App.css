@@ -1,0 +1,13 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: helvetica, sans-serif;
+}
+
+.App {
+    height: 100vh;
+    border: 1px solid blue;
+}
+
+

@@ -1,0 +1,7 @@
+.table-modify {
+  background-color: white;
+}
+
+.table-modify:hover {
+  cursor: pointer;
+}

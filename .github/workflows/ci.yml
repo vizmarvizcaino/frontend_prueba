@@ -1,15 +1,17 @@
-name: Express.js CI
+name: Continuous integration
+
 on:
-  push:
-    branches: [ main ]
-    
+  pull_request:
+    branches:
+      - main
+
 jobs:
   linting:
     name: Linting of the code
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install packages
-        run: npm i   
-      - name: Run linting
+        run: npm i
+      - name: Run linting 
         run: npm run lint

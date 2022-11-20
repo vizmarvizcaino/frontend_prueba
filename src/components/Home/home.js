@@ -5,8 +5,7 @@ import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { Link } from 'react-router-dom'
 
-
-function Home() {
+const Home = () => {
   return (
     <div className="container-home">
       <NavBar />

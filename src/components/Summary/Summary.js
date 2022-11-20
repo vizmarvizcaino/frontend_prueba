@@ -3,13 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Spinner } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../Summary/Summary.css";
 
 
 const Summary = () => {
   const [message, setMessage] = useState("");
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   const listAcademics = useSelector((state) => state.academics);
   const listUser = useSelector((state) => state.users);
   const API_URL = "http://localhost:4000/user";
@@ -18,30 +18,30 @@ const Summary = () => {
     listAcademics,
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const writeResource = async ()  => {
     return new Promise((resolve, reject) => {
       axios.post(API_URL, payload)
         .then((response) => {
         // handle success
-        resolve(response.data);
-      })
+          resolve(response.data);
+        })
         .then(error => {
-        reject(error)
-      })
+          reject(error);
+        });
     });
-  }
+  };
   const requestResource = async () => {
-    setLoader(true)
+    setLoader(true);
     const message = await writeResource();
     setMessage(message);
     alert(message.message);
-    setLoader(false)
+    setLoader(false);
     if(message){
       return navigate("/list-users");
     }
-  }
+  };
 
   return (
     <>

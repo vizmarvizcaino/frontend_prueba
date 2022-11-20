@@ -6,11 +6,11 @@ export const academicSlice = createSlice({
   reducers: {
     addAcademic: (state, action) => {
       if (action.payload) {
-        state.push(action.payload)
+        state.push(action.payload);
       }
     }
   }
-})
+});
 
-export const { addAcademic } = academicSlice.actions
-export default academicSlice.reducer
+export const { addAcademic } = academicSlice.actions;
+export default academicSlice.reducer;

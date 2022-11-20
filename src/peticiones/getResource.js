@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react'
-import TableRegister from '../components/TableRegister/TableRegister'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import TableRegister from '../components/TableRegister/TableRegister';
+import axios from 'axios';
 
 export function PeticionApi() {
-  const [user, setUser] = useState([])
-  const API_URL = 'http://localhost:4000/users'
+  const [user, setUser] = useState([]);
+  const API_URL = 'http://localhost:4000/users';
 
   function getCoursesApi() {
     return new Promise((resolve, reject) => {
@@ -15,19 +15,19 @@ export function PeticionApi() {
           resolve(response.data);
         })
         .then(error => {
-          reject(error)
-        })
-    })
+          reject(error);
+        });
+    });
   }
 
   const requestApi = async () =>{
-    const user = await getCoursesApi()
-    setUser(user)
-  }
+    const user = await getCoursesApi();
+    setUser(user);
+  };
 
   useEffect(() => {
-    requestApi()
-  }, [])
+    requestApi();
+  }, []);
 
   return (
 
@@ -43,11 +43,11 @@ export function PeticionApi() {
             nota={user.nota}
             salon={user.salon}
             key={user.id}
-          />
+          />;
         })
       }
     </div>
-  )
+  );
 }
 
 

@@ -5,10 +5,10 @@ export const userSlice = createSlice({
   initialState: [],
   reducers: {
     addUsers: (state, action) => {
-      state.push(action.payload)
+      state.push(action.payload);
     }
   }
-})
+});
 
-export const { addUsers } = userSlice.actions
-export default userSlice.reducer
+export const { addUsers } = userSlice.actions;
+export default userSlice.reducer;

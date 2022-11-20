@@ -1,9 +1,9 @@
-import React from 'react'
-import { Routes as Switch, Route, } from 'react-router-dom'
-import DataPersonal from '../components/DataPersonal/DataPersonal'
-import DataAcademic from '../components/DataAcademic/DataAcademic'
-import DataSummary from '../components/Summary/Summary'
-import { PeticionApi } from '../peticiones/getResource'
+import React from 'react';
+import { Routes as Switch, Route, } from 'react-router-dom';
+import DataPersonal from '../components/DataPersonal/DataPersonal';
+import DataAcademic from '../components/DataAcademic/DataAcademic';
+import DataSummary from '../components/Summary/Summary';
+import { PeticionApi } from '../peticiones/getResource';
 
 
 const Routes = () => {
@@ -20,7 +20,7 @@ const Routes = () => {
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

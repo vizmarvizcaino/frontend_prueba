@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../../features/user/userSlice";
 import { v4 as uuid } from "uuid";
-import { Link } from "wouter";
+import { useNavigate } from "react-router-dom" ;
 import "../DataPersonal/DataPersona.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const DataPersonal = () => {
   const [userBtn, setUserBtn] = useState(false);
   const [user, setUser] = useState({
+    id: uuid(),
     nombres: "",
     apellidos: "",
     telefono: "",
   });
+  const navigate =useNavigate()
 
   const dispatch = useDispatch();
 
@@ -38,7 +40,9 @@ const DataPersonal = () => {
         id: uuid(),
       })
     );
-    alert("El usuario se ha guardado correctamente");
+    if(userBtn){
+      return navigate("/data-academic");
+    }
   };
   return (
     <div className="container-usuario">
@@ -66,22 +70,8 @@ const DataPersonal = () => {
           onChange={handleChange}
         />
         <button disabled={userBtn === false} className="btn btn-primary">
-          Guardar
-        </button>
-        {!userBtn ? (
-          ""
-        ) : (
-          <li>
-            <Link href="/data-academic">
-              <a className="btn btn-primary p-1 mb-3 bg-primary text-white">
-                Siguiente
-              </a>
-            </Link>
-          </li>
-        )}
-        <Link href="/listado-usuarios">
-          <h3>Mostar listado de usuarios</h3>
-        </Link>
+          Siguiente
+        </button> 
       </form>
     </div>
   );

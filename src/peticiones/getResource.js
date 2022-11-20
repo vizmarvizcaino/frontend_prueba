@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react'
 import TableRegister from '../components/TableRegister/TableRegister'
 import axios from 'axios'
@@ -9,14 +10,17 @@ export function PeticionApi() {
   function getCoursesApi() {
     return new Promise((resolve, reject) => {
       axios(API_URL)
-        .then(function (response) {
+        .then(response => {
           // handle success
           resolve(response.data);
+        })
+        .then(error => {
+          reject(error)
         })
     })
   }
 
-  async function requestApi() {
+  const requestApi = async () =>{
     const user = await getCoursesApi()
     setUser(user)
   }

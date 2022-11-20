@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "wouter";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Spinner } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css"
 import "../Summary/Summary.css";
+
 
 const Summary = () => {
   const [message, setMessage] = useState("");
+  const [loader, setLoader] = useState(false)
   const listAcademics = useSelector((state) => state.academics);
   const listUser = useSelector((state) => state.users);
   const API_URL = "http://localhost:4000/user";
@@ -14,25 +18,37 @@ const Summary = () => {
     listAcademics,
   };
 
-  async function writeResource() {
-    return new Promise(function (resolve, reject) {
-      axios.post(API_URL, payload).then(function (response) {
+  const navigate = useNavigate()
+
+  const writeResource = async ()  => {
+    return new Promise((resolve, reject) => {
+      axios.post(API_URL, payload)
+        .then((response) => {
         // handle success
-        console.log(response.data);
         resolve(response.data);
-      });
+      })
+        .then(error => {
+        reject(error)
+      })
     });
   }
-  async function requestResource() {
+  const requestResource = async () => {
+    setLoader(true)
     const message = await writeResource();
     setMessage(message);
     alert(message.message);
+    setLoader(false)
+    if(message){
+      return navigate("/list-users");
+    }
   }
 
   return (
     <>
       <div className="container-usuario">
         <h2>Resumen de los datos</h2>
+        {loader ? <Spinner color="primary"/>  : '' }
+        <p>{message}</p>
         {listUser.map((user) => (
           <div key={user.id} className="data-usuario">
             <div>
@@ -73,9 +89,6 @@ const Summary = () => {
         <button onClick={requestResource} className="btn btn-primary">
           Enviar
         </button>
-        <Link href="/listado-usuarios">
-          <h3>Mostar listado de usuarios</h3>
-        </Link>
       </div>
     </>
   );

@@ -11,7 +11,6 @@ const TableRegister = ({
   nota,
   salon,
 }) => {
-  console.log(nombre);
   return (
     <>
       <div>

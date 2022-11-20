@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { addAcademic } from '../../features/academic/academicSlice';
 import { v4 as uuid } from 'uuid';

@@ -44,7 +44,6 @@ export function PeticionApi() {
             salon={user.salon}
             key={user.id}
           />
-
         })
       }
     </div>

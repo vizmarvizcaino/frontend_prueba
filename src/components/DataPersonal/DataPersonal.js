@@ -14,7 +14,7 @@ const DataPersonal = () => {
     apellidos: "",
     telefono: "",
   });
-  const navigate =useNavigate()
+  const navigate =useNavigate();
 
   const dispatch = useDispatch();
 

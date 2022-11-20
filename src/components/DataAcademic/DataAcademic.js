@@ -1,43 +1,43 @@
-import React, {useState} from 'react'
-import { useDispatch } from 'react-redux'
-import { addAcademic } from '../../features/academic/academicSlice'
-import { v4 as uuid } from 'uuid'
-import { useNavigate } from 'react-router-dom'
-import "bootstrap/dist/css/bootstrap.min.css"
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { addAcademic } from '../../features/academic/academicSlice';
+import { v4 as uuid } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const DataAcademic = () => {
-  const [academicBtn, setAcademicBtn] = useState(false)
+  const [academicBtn, setAcademicBtn] = useState(false);
   const [academic, setAcademic] = useState({
     grado: '',
     materia: '',
     nota: '',
     salon: '',
-  })
+  });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
   const handleChange = (e) => {
     setAcademic({
       ...academic,
       [e.target.name]: e.target.value,
-    })
+    });
     if(academic.grado.length >= 2 && academic.nota.length >= 2 ){
-      setAcademicBtn(true)
+      setAcademicBtn(true);
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(addAcademic({
       ...academic,
       id: uuid(),
-    }))
+    }));
     if(academicBtn){
       return navigate("/data-summary");
     }
-  }
+  };
 
   return (
     <div className='container-usuario'>
@@ -50,7 +50,7 @@ const DataAcademic = () => {
         <button disabled={academicBtn === false} className="btn btn-primary">Siguiente</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default DataAcademic
+export default DataAcademic;
